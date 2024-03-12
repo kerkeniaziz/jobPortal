@@ -9,6 +9,9 @@ const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/error.js");
 
 
+//import routes
+const authRoutes = require ('./routes/authRoutes');
+
 
 //database connection
 
@@ -30,10 +33,12 @@ app.use(cookieParser());
 app.use(cors());
 
 
-//Routes
-app.get('/', (req,res)=>{
-    res.send('Hello World');
-})
+//Routes middelware
+//app.get('/', (req,res)=>{
+ //   res.send('Hello World');
+//})
+app.use('/api', authRoutes);
+
 
 
 //error middelware
