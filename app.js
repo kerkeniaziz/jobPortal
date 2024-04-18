@@ -11,6 +11,7 @@ const errorHandler = require("./middleware/error.js");
 
 //import routes
 const authRoutes = require ('./routes/authRoutes');
+const userRoutes = require ('./routes/userRoutes.js');
 
 
 //database connection
@@ -35,9 +36,11 @@ app.use(cors());
 
 //Routes middelware
 //app.get('/', (req,res)=>{
- //   res.send('Hello World');
+ //  res.send('Hello World');
 //})
 app.use('/api', authRoutes);
+
+app.use('/api', userRoutes);
 
 
 
@@ -48,4 +51,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
+    console.log(`http://localhost:8000/api`);
 });
